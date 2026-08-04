@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>醣代謝風險｜了解身體如何處理糖分</title>
+  <meta name="description" content="用簡單比喻了解健康醣代謝與醣代謝風險，以及飲食、運動、休息與營養神隊友如何支援日常代謝力。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f7faf9;
+      --bg-soft: #eef6f3;
+      --surface: #ffffff;
+      --ink: #0f2430;
+      --ink-soft: #2a4452;
+      --muted: #5b7380;
+      --line: #d7e5e0;
+      --teal: #0f766e;
+      --teal-deep: #0b5f59;
+      --teal-soft: #d9f3ee;
+      --amber: #c27803;
+      --amber-soft: #fff4df;
+      --rose: #b42318;
+      --rose-soft: #fdecea;
+      --shadow: 0 18px 40px -24px rgba(15, 54, 48, 0.35), 0 10px 24px -18px rgba(0, 0, 0, 0.12);
+      --radius: 16px;
+      --max: 1080px;
+      --font: "Noto Sans TC", "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 500px at 10% -10%, #d8f3ec 0%, transparent 55%),
+        radial-gradient(900px 420px at 100% 0%, #e8f0ff 0%, transparent 45%),
+        var(--bg);
+      line-height: 1.7;
+      text-wrap: pretty;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+    .wrap { width: min(var(--max), calc(100% - 2rem)); margin-inline: auto; }
+
+    /* Nav */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(247, 250, 249, 0.82);
+      border-bottom: 1px solid rgba(215, 229, 224, 0.8);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 64px; gap: 1rem;
+    }
+    .brand {
+      display: flex; align-items: center; gap: .7rem;
+      font-weight: 600; letter-spacing: .02em; text-decoration: none;
+    }
+    .brand-mark {
+      width: 34px; height: 34px; border-radius: 10px;
+      background: linear-gradient(145deg, #14b8a6, #0f766e);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.25);
+      position: relative;
+    }
+    .brand-mark::after {
+      content: ""; position: absolute; inset: 9px;
+      border: 2px solid rgba(255,255,255,.9); border-radius: 999px;
+      border-top-color: transparent; transform: rotate(-20deg);
+    }
+    .nav-links { display: flex; gap: 1.1rem; align-items: center; flex-wrap: wrap; }
+    .nav-links a {
+      text-decoration: none; color: var(--ink-soft); font-size: .95rem; font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .45rem;
+      border-radius: 999px; padding: .78rem 1.2rem; font-weight: 600;
+      text-decoration: none; border: 1px solid transparent; transition: .2s ease;
+      min-height: 44px; cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--teal); color: #fff;
+      box-shadow: 0 10px 24px -12px rgba(15, 118, 110, .7);
+    }
+    .btn-primary:hover { background: var(--teal-deep); transform: translateY(-1px); }
+    .btn-ghost {
+      background: #fff; border-color: var(--line); color: var(--ink-soft);
+    }
+    .btn-ghost:hover { border-color: #b7d4cb; color: var(--teal); }
+    .btn-soft {
+      background: var(--teal-soft); color: var(--teal-deep); border-color: transparent;
+    }
+    .btn-soft:hover { background: #c8ebe4; }
+
+    /* Hero */
+    .hero {
+      padding: 4.2rem 0 3.2rem;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.15fr .85fr; gap: 2.4rem; align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--teal-soft); color: var(--teal-deep);
+      border-radius: 999px; padding: .35rem .75rem;
+      font-size: .86rem; font-weight: 600; margin-bottom: 1rem;
+    }
+    .eyebrow::before {
+      content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--teal);
+    }
+    h1 {
+      font-size: clamp(2rem, 4.2vw, 3.25rem);
+      line-height: 1.18; font-weight: 700; letter-spacing: -.02em;
+      margin-bottom: 1rem;
+    }
+    .lead {
+      font-size: 1.08rem; color: var(--muted); max-width: 36rem; margin-bottom: 1.6rem;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 1.5rem; }
+    .hero-note {
+      font-size: .9rem; color: var(--muted);
+      border-left: 3px solid var(--teal);
+      padding-left: .85rem;
+    }
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      box-shadow: var(--shadow);
+      padding: 1.35rem;
+    }
+    .compare {
+      display: grid; gap: .9rem;
+    }
+    .compare-item {
+      border-radius: 14px; padding: 1rem 1.05rem;
+      border: 1px solid var(--line);
+    }
+    .compare-item.good {
+      background: linear-gradient(180deg, #f3fbf8, #ffffff);
+      border-color: #c9e8df;
+    }
+    .compare-item.risk {
+      background: linear-gradient(180deg, #fff8f1, #ffffff);
+      border-color: #f0ddc0;
+    }
+    .compare-item h3 {
+      font-size: 1rem; margin-bottom: .35rem; display: flex; align-items: center; gap: .45rem;
+    }
+    .compare-item p { color: var(--muted); font-size: .95rem; }
+    .tag {
+      display: inline-flex; font-size: .75rem; font-weight: 700;
+      padding: .15rem .45rem; border-radius: 999px; letter-spacing: .02em;
+    }
+    .tag-good { background: var(--teal-soft); color: var(--teal-deep); }
+    .tag-risk { background: var(--amber-soft); color: #915f08; }
+
+    /* Sections */
+    section { padding: 3.5rem 0; }
+    .section-head {
+      max-width: 40rem; margin-bottom: 1.8rem;
+    }
+    .section-head h2 {
+      font-size: clamp(1.55rem, 2.6vw, 2.15rem);
+      line-height: 1.25; letter-spacing: -.015em; margin-bottom: .55rem;
+    }
+    .section-head p { color: var(--muted); }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* Timeline / stages */
+    .stages {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+    }
+    .stage {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.15rem 1.1rem 1.25rem;
+      position: relative;
+      min-height: 100%;
+    }
+    .stage-num {
+      font-size: .78rem; font-weight: 700; color: var(--teal);
+      letter-spacing: .08em; text-transform: uppercase; margin-bottom: .55rem;
+    }
+    .stage h3 { font-size: 1.05rem; margin-bottom: .45rem; }
+    .stage p { color: var(--muted); font-size: .94rem; }
+    .stage[data-level="1"] { border-top: 4px solid #5ec4b3; }
+    .stage[data-level="2"] { border-top: 4px solid #e0a23a; }
+    .stage[data-level="3"] { border-top: 4px solid #d4674a; }
+    .stage[data-level="4"] { border-top: 4px solid #9b4d6c; }
+
+    /* Lifestyle */
+    .life-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+    }
+    .life-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.2rem 1.35rem;
+    }
+    .life-card h3 {
+      font-size: 1.08rem; margin-bottom: .7rem;
+      display: flex; align-items: center; gap: .55rem;
+    }
+    .icon-pill {
+      width: 34px; height: 34px; border-radius: 10px;
+      display: inline-grid; place-items: center;
+      background: var(--bg-soft); font-size: 1rem;
+    }
+    .life-card ul { list-style: none; display: grid; gap: .65rem; }
+    .life-card li {
+      color: var(--ink-soft); font-size: .97rem;
+      padding-left: 1.15rem; position: relative;
+    }
+    .life-card li::before {
+      content: ""; position: absolute; left: 0; top: .55em;
+      width: 7px; height: 7px; border-radius: 50%; background: var(--teal);
+    }
+    .order-flow {
+      display: flex; flex-wrap: wrap; gap: .5rem; margin: .4rem 0 .75rem;
+    }
+    .chip {
+      background: var(--bg-soft); border: 1px solid var(--line);
+      border-radius: 999px; padding: .35rem .7rem; font-size: .86rem; font-weight: 600;
+      color: var(--ink-soft);
+    }
+    .chip em { font-style: normal; color: var(--teal); margin-right: .25rem; }
+
+    /* Products */
+    .products-band {
+      background: linear-gradient(180deg, #0f3d3a 0%, #0b2f2d 100%);
+      color: #eef8f6;
+      position: relative;
+      overflow: hidden;
+    }
+    .products-band::before {
+      content: ""; position: absolute; inset: auto -10% -40% auto;
+      width: 420px; height: 420px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(45, 212, 191, .18), transparent 70%);
+      pointer-events: none;
+    }
+    .products-band .section-head h2 { color: #fff; }
+    .products-band .section-head p { color: rgba(238, 248, 246, .78); }
+    .product-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.15rem;
+      position: relative;
+    }
+    .product-card {
+      background: rgba(255,255,255,.97);
+      color: var(--ink);
+      border-radius: calc(var(--radius) + 2px);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 24px 48px -28px rgba(0,0,0,.55);
+      display: grid;
+      grid-template-rows: auto 1fr;
+      transition: transform .2s ease, box-shadow .2s ease;
+      text-decoration: none;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 30px 55px -26px rgba(0,0,0,.6);
+    }
+    .product-media {
+      background: #f4f8f7;
+      aspect-ratio: 1 / 1;
+      display: grid; place-items: center;
+      padding: 1.25rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .product-media img {
+      width: min(100%, 280px);
+      height: auto;
+      object-fit: contain;
+    }
+    .product-body { padding: 1.2rem 1.25rem 1.35rem; display: grid; gap: .55rem; align-content: start; }
+    .product-brand {
+      font-size: .78rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--teal);
+    }
+    .product-body h3 { font-size: 1.18rem; line-height: 1.3; }
+    .product-body p { color: var(--muted); font-size: .94rem; }
+    .product-meta {
+      display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .25rem;
+    }
+    .badge {
+      font-size: .78rem; font-weight: 600;
+      background: var(--bg-soft); color: var(--ink-soft);
+      border-radius: 999px; padding: .28rem .55rem;
+    }
+    .product-cta {
+      margin-top: .55rem;
+      display: inline-flex; align-items: center; gap: .35rem;
+      color: var(--teal); font-weight: 700; font-size: .95rem;
+    }
+    .product-card:hover .product-cta { color: var(--teal-deep); }
+    .nutrient-table {
+      margin-top: 1.4rem;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .nutrient-table table {
+      width: 100%; border-collapse: collapse;
+    }
+    .nutrient-table th,
+    .nutrient-table td {
+      text-align: left; padding: .95rem 1.1rem; vertical-align: top;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      font-size: .95rem;
+    }
+    .nutrient-table th {
+      width: 28%; color: #9be7d8; font-weight: 600; background: rgba(0,0,0,.12);
+    }
+    .nutrient-table td { color: rgba(238,248,246,.9); }
+    .nutrient-table tr:last-child th,
+    .nutrient-table tr:last-child td { border-bottom: 0; }
+    .nutrient-note {
+      margin-top: .9rem; font-size: .88rem; color: rgba(238,248,246,.65);
+    }
+
+    /* Disclaimer */
+    .disclaimer {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.25rem;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+    .disclaimer strong { color: var(--ink-soft); }
+
+    footer {
+      padding: 2rem 0 2.6rem;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+    .footer-inner {
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: .8rem;
+      border-top: 1px solid var(--line); padding-top: 1.2rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .stages, .life-grid, .product-grid { grid-template-columns: 1fr; }
+      .stages { grid-template-columns: 1fr 1fr; }
+      .nav-links .hide-sm { display: none; }
+      .hero { padding-top: 2.4rem; }
+      .nutrient-table th { width: 34%; }
+    }
+    @media (max-width: 560px) {
+      .stages { grid-template-columns: 1fr; }
+      .nav-inner { min-height: 58px; }
+      .hero-actions .btn { width: 100%; }
+      .nutrient-table th,
+      .nutrient-table td { display: block; width: 100%; }
+      .nutrient-table th { border-bottom: 0; padding-bottom: .25rem; }
+      .nutrient-table td { padding-top: .2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .product-card, .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>醣代謝風險</span>
+      </a>
+      <nav class="nav-links" aria-label="主要導覽">
+        <a class="hide-sm" href="#how">健康機制</a>
+        <a class="hide-sm" href="#stages">演變階段</a>
+        <a class="hide-sm" href="#lifestyle">日常提升</a>
+        <a class="btn btn-soft" href="#products">營養神隊友</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">商業資訊分享 · 健康教育</div>
+          <h1>醣代謝風險：<br />當「鑰匙」愈來愈難開「門鎖」</h1>
+          <p class="lead">
+            吃進食物後，血糖會上升。胰臟分泌胰島素（鑰匙），打開細胞受體（門鎖），讓葡萄糖進入細胞轉化為能量。當門鎖開始生鏽，身體就可能進入醣代謝風險。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#stages">了解演變階段</a>
+            <a class="btn btn-ghost" href="#lifestyle">先從日常生活著手</a>
+          </div>
+          <p class="hero-note">本頁用生活比喻說明醣代謝概念，並分享可執行的日常方法與相關營養補充方向。</p>
+        </div>
+
+        <aside class="hero-card" aria-label="健康 vs 風險對照">
+          <div class="compare">
+            <div class="compare-item good">
+              <h3><span class="tag tag-good">健康身體</span> 順暢開鎖</h3>
+              <p>胰島素（鑰匙）順利打開細胞門鎖（受體），葡萄糖進入細胞轉化為能量。</p>
+            </div>
+            <div class="compare-item risk">
+              <h3><span class="tag tag-risk">醣代謝風險</span> 門鎖生鏽</h3>
+              <p>細胞門鎖敏感度下降，鑰匙愈來愈難開鎖；葡萄糖堆積在血液中，胰臟被迫分泌更多鑰匙而過勞。</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>健康身體如何處理糖分？</h2>
+          <p>一個容易記住的比喻：胰島素是鑰匙，細胞受體是門鎖，葡萄糖要進門才能變成能量。</p>
+        </div>
+        <div class="panel" style="padding:1.4rem 1.35rem;">
+          <div class="order-flow" style="margin:0 0 1rem;">
+            <span class="chip"><em>1</em>進食後血糖上升</span>
+            <span class="chip"><em>2</em>胰臟分泌胰島素</span>
+            <span class="chip"><em>3</em>打開細胞門鎖</span>
+            <span class="chip"><em>4</em>葡萄糖轉為能量</span>
+          </div>
+          <p style="color:var(--muted);">
+            當門鎖開始生鏽（敏感度下降），鑰匙愈來愈難開鎖，葡萄糖堆積在血液中，胰臟就被迫加班分泌更多鑰匙——這就是醣代謝風險的起點。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="stages" style="padding-top:1.5rem;">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>惡化後會怎樣？演變階段</h2>
+          <p>風險通常不是一夜之間出現，而是由初期負擔逐步累積。愈早留意日常訊號，愈有空間調整。</p>
+        </div>
+        <div class="stages">
+          <article class="stage" data-level="1">
+            <div class="stage-num">階段 01</div>
+            <h3>初期</h3>
+            <p>胰臟加班工作，雖然尚能維持平衡，但身體已出現潛在負擔。</p>
+          </article>
+          <article class="stage" data-level="2">
+            <div class="stage-num">階段 02</div>
+            <h3>中期（代謝受損）</h3>
+            <p>門鎖嚴重生鏽，胰臟加班也趕不及，血糖開始偏高，容易出現餐後昏昏欲睡、腹部脂肪堆積。</p>
+          </article>
+          <article class="stage" data-level="3">
+            <div class="stage-num">階段 03</div>
+            <h3>嚴重期（機能衰退）</h3>
+            <p>胰臟調節能力顯著下降，無法有效調控血糖，健康狀況大打折扣。</p>
+          </article>
+          <article class="stage" data-level="4">
+            <div class="stage-num">階段 04</div>
+            <h3>長期影響</h3>
+            <p>長期血糖不平穩會增加身體器官與血管系統的日常負擔。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="lifestyle">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>透過日常生活提升代謝力</h2>
+          <p>不靠極端方法。飲食順序、飯後走動、睡眠與腰圍管理，都是可持續的槓桿。</p>
+        </div>
+        <div class="life-grid">
+          <article class="life-card">
+            <h3><span class="icon-pill" aria-hidden="true">🥗</span>飲食</h3>
+            <div class="order-flow" aria-label="建議進食順序">
+              <span class="chip"><em>先</em>蔬菜</span>
+              <span class="chip"><em>再</em>蛋白質</span>
+              <span class="chip"><em>後</em>碳水</span>
+            </div>
+            <ul>
+              <li>改變進食順序：先吃蔬菜 → 再吃蛋白質（肉／蛋／豆腐）→ 最後吃碳水化合物（飯／麵）。這個小順序能有效平緩餐後血糖暴升。</li>
+              <li>少吃精製糖：減少手搖飲、白麵包及甜點，多選擇高纖粗糧（如糙米、燕麥）。</li>
+            </ul>
+          </article>
+
+          <article class="life-card">
+            <h3><span class="icon-pill" aria-hidden="true">🚶</span>運動</h3>
+            <ul>
+              <li>飯後散步 10–15 分鐘：走路時肌肉會直接消耗血液中的葡萄糖，無需過度依賴胰島素。</li>
+              <li>阻力訓練：每週進行 2 次肌肉訓練（如深蹲）。肌肉是身體最大的「儲糖庫」。</li>
+            </ul>
+          </article>
+
+          <article class="life-card">
+            <h3><span class="icon-pill" aria-hidden="true">😴</span>休息</h3>
+            <ul>
+              <li>睡足 7–8 小時：長期熬夜會刺激壓力荷爾蒙（皮質醇）分泌，直接干擾胰島素運作。</li>
+            </ul>
+          </article>
+
+          <article class="life-card">
+            <h3><span class="icon-pill" aria-hidden="true">📏</span>其他</h3>
+            <ul>
+              <li>管理腰圍：減少腹部內臟脂肪（男性控制在 90cm 以下，女性 80cm 以下）。內臟脂肪是阻礙胰島素工作的主要元兇之一。</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="products-band">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>補充劑如何扮演「營養神隊友」</h2>
+          <p>日常生活是主線；合適的營養補充可作為支援。以下產品圖片可直接點擊前往官方頁面了解詳情。</p>
+        </div>
+
+        <div class="product-grid">
+          <!-- Product 1: Isotonix 健醣鉻 -->
+          <a class="product-card"
+             href="https://hk.shop.com/SMARTBUYCOM/1850139954-p.xhtml?creditUser=C1857001250&utm_source=PDP&utm_medium=Sharefeature&utm_campaign=Link"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="前往 Isotonix 健醣鉻沖飲產品頁">
+            <div class="product-media">
+              <img
+                src="assets/isotonix-chrome.jpg"
+                alt="Isotonix® 健醣鉻沖飲產品圖"
+                loading="lazy"
+                width="800" height="800"
+              />
+            </div>
+            <div class="product-body">
+              <div class="product-brand">Isotonix® · 鉻 Chromium</div>
+              <h3>健醣鉻沖飲</h3>
+              <p>關鍵營養素「鉻」參與碳水化合物與糖類的正常代謝，輔助維持身體對營養的吸收與利用效率。等滲透配方有助快速吸收。</p>
+              <div class="product-meta">
+                <span class="badge">代謝助手</span>
+                <span class="badge">單瓶 30 次份量</span>
+                <span class="badge">HK$358</span>
+              </div>
+              <span class="product-cta">查看產品詳情 →</span>
+            </div>
+          </a>
+
+          <!-- Product 2: NutriClean 腸道營養纖維粉 -->
+          <a class="product-card"
+             href="https://hk.shop.com/SMARTBUYCOM/671378141-p.xhtml?creditUser=C1857001250&utm_source=PDP&utm_medium=Sharefeature&utm_campaign=Link"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="前往 NutriClean 腸道營養纖維粉產品頁">
+            <div class="product-media">
+              <img
+                src="assets/nutriclean-fiber.jpg"
+                alt="NutriClean® 腸道營養纖維粉產品圖"
+                loading="lazy"
+                width="800" height="800"
+              />
+            </div>
+            <div class="product-body">
+              <div class="product-brand">NutriClean® · 纖維 + 益生菌</div>
+              <h3>腸道營養纖維粉</h3>
+              <p>結合可溶性膳食纖維、菊糖與益生菌，支援腸道平衡與正常排便規律；纖維亦有助日常飲食中更平穩地應對糖分負荷。</p>
+              <div class="product-meta">
+                <span class="badge">腸道支援</span>
+                <span class="badge">單罐 28 次份量</span>
+                <span class="badge">HK$466</span>
+              </div>
+              <span class="product-cta">查看產品詳情 →</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="nutrient-table" aria-label="營養素角色說明">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">營養素</th>
+                <th scope="col">角色比喻</th>
+                <th scope="col">它如何幫你？</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>鉻 (Chromium)</td>
+                <td>🔑 代謝助手</td>
+                <td>人體必需微量元素，參與碳水化合物與糖類的正常代謝，輔助維持身體對營養的吸收與利用效率。</td>
+              </tr>
+              <tr>
+                <td>魚油 (Omega-3)</td>
+                <td>🛡️ 調節助手</td>
+                <td>富含 EPA 與 DHA 必需脂肪酸，幫助調節生理機能，應對日常飲食習慣帶來的身體負擔，維護整體健康。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="nutrient-note">上表為教育資訊中的營養角色說明。產品卡片以你提供的兩個官方連結為準；點擊產品圖或卡片即可前往 SHOP.COM 香港頁面。</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="disclaimer" role="note">
+          <strong>免責聲明：</strong>
+          本頁的健康資訊及營養補充品，不用於診斷、治療或預防任何疾病。如有特殊健康狀況，請諮詢專業醫療人員。產品相關聲稱以官方產品頁為準；部分產品可能未根據《藥劑業及毒藥條例》或《中醫藥條例》註冊。
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>醣代謝風險 · 商業資訊分享</span>
+      <span>單頁教育用途 · 可本機直接開啟</span>
+    </div>
+  </footer>
+</body>
+</html>
